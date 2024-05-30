@@ -28,6 +28,7 @@ import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
 import software.amazon.awssdk.core.client.config.SdkAdvancedClientOption;
 import software.amazon.awssdk.core.client.config.SdkClientConfiguration;
 import software.amazon.awssdk.core.client.config.SdkClientOption;
+import software.amazon.awssdk.core.retry.RetryPolicy;
 import software.amazon.awssdk.http.async.SdkAsyncHttpClient;
 import software.amazon.awssdk.http.nio.netty.NettyNioAsyncHttpClient;
 import software.amazon.awssdk.regions.Region;
@@ -99,7 +100,8 @@ class AWSClientUtilTest {
                 clientConfiguration,
                 builder,
                 formatFlinkUserAgentPrefix(
-                        DEFAULT_USER_AGENT_PREFIX_FORMAT + AWSClientUtil.V2_USER_AGENT_SUFFIX));
+                        DEFAULT_USER_AGENT_PREFIX_FORMAT + AWSClientUtil.V2_USER_AGENT_SUFFIX),
+                RetryPolicy.defaultRetryPolicy());
 
         verify(builder).build();
         verify(builder)
@@ -124,7 +126,8 @@ class AWSClientUtilTest {
                 clientConfiguration,
                 builder,
                 formatFlinkUserAgentPrefix(
-                        DEFAULT_USER_AGENT_PREFIX_FORMAT + AWSClientUtil.V2_USER_AGENT_SUFFIX));
+                        DEFAULT_USER_AGENT_PREFIX_FORMAT + AWSClientUtil.V2_USER_AGENT_SUFFIX),
+                RetryPolicy.defaultRetryPolicy());
 
         verify(builder).putAdvancedOption(SdkAdvancedClientOption.USER_AGENT_SUFFIX, "suffix");
     }
@@ -142,7 +145,8 @@ class AWSClientUtilTest {
                 clientConfiguration,
                 builder,
                 formatFlinkUserAgentPrefix(
-                        DEFAULT_USER_AGENT_PREFIX_FORMAT_V2 + AWSClientUtil.V2_USER_AGENT_SUFFIX));
+                        DEFAULT_USER_AGENT_PREFIX_FORMAT_V2 + AWSClientUtil.V2_USER_AGENT_SUFFIX),
+                RetryPolicy.defaultRetryPolicy());
 
         verify(builder).apiCallAttemptTimeout(Duration.ofMillis(500));
     }
@@ -160,7 +164,8 @@ class AWSClientUtilTest {
                 clientConfiguration,
                 builder,
                 formatFlinkUserAgentPrefix(
-                        DEFAULT_USER_AGENT_PREFIX_FORMAT_V2 + AWSClientUtil.V2_USER_AGENT_SUFFIX));
+                        DEFAULT_USER_AGENT_PREFIX_FORMAT_V2 + AWSClientUtil.V2_USER_AGENT_SUFFIX),
+                RetryPolicy.defaultRetryPolicy());
 
         verify(builder).apiCallTimeout(Duration.ofMillis(600));
     }

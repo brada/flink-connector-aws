@@ -29,4 +29,7 @@ public class KinesisFirehoseConfigConstants {
     /** Firehose identifier for user agent prefix. */
     public static final String FIREHOSE_CLIENT_USER_AGENT_PREFIX =
             "aws.firehose.client.user-agent-prefix";
+
+    public static final String FIREHOSE_CLIENT_RETRY_POLICY_NUM_RETRIES =
+            "aws.firehose.client.retry-policy.num-retries";
 }

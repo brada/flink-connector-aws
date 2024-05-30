@@ -186,7 +186,8 @@ public class KinesisStreamsSource<T>
                         httpClient,
                         KinesisClient.builder(),
                         KinesisStreamsConfigConstants.BASE_KINESIS_USER_AGENT_PREFIX_FORMAT,
-                        KinesisStreamsConfigConstants.KINESIS_CLIENT_USER_AGENT_PREFIX);
+                        KinesisStreamsConfigConstants.KINESIS_CLIENT_USER_AGENT_PREFIX,
+                        KinesisStreamsConfigConstants.KINESIS_CLIENT_RETRY_POLICY_NUM_RETRIES);
         return new KinesisStreamProxy(kinesisClient, httpClient);
     }
 
